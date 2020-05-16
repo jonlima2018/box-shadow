@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import BoxShadow from './pages/BoxShadow';
 import './App.css';
 
 function App() {
+
+  const [styleboxshadow, setStyleboxshadow] = useState({});
+  const [backgroundColor, setBackgroundColor] = useState('#FFFFFF');
+  const [boxColor, setBoxColor] = useState('#c4c4c4');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <BoxShadow
+        getStyle={setStyleboxshadow}
+        getBackgroundColor={setBackgroundColor}
+        getBoxColor={setBoxColor}
+      />
+        <div className="mainBox" style={{backgroundColor: `${backgroundColor}`}}>
+          <div className="box" style={{backgroundColor: `${boxColor}`, boxShadow: `${styleboxshadow.boxShadow}`}}>
+            <ul>
+              <li>-webkit-box-shadow: {styleboxshadow.boxShadow}</li>
+              <li>-moz-box-shadow: {styleboxshadow.boxShadow}</li>
+              <li>box-shadow: {styleboxshadow.boxShadow}</li>
+            </ul>
+          </div>
+        </div>
     </div>
   );
 }
