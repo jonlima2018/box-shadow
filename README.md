@@ -6,6 +6,7 @@
 
 ### A aplicação consiste em visualizar o efeito css e exibe o código.
 
+Para testar a aplicação [clique aqui](https://boxshadow.netlify.app/).
 
 <h1 align="center">
   <img src="./src/.github/box-shadow.PNG">
