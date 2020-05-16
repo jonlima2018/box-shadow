@@ -2,6 +2,8 @@
   <img src="./src/.github/favicon.png">
 </h1>
 
+<h1 align="center">
+  <h1>Gerador Css de box shadow, desenvolvido com a tecnologia ReactJS.</h1>
 
 ## Gerador Css de box shadow, desenvolvido com a tecnologia ReactJS.
 
