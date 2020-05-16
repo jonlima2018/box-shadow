@@ -9,6 +9,6 @@
 
 
 <h1 align="center">
-  <img src="/src/.github/box-shadow.png">
+  <img src="./src/.github/box-shadow.png">
 </h1>
 
