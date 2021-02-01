@@ -1,40 +1,29 @@
 import React from 'react';
 import { Slider, Input } from '@material-ui/core';
-import './styles.css';
+import StyledSlider from './Styled';
 
-const Slide = (props) => {  
-  return(
-  <>
-  <div className="container-slider">
-    <div className="section-slider">
-      <span>{props.name}</span>
-      <Input
-        value={props.value}
-        margin="dense"
-        onChange={props.handleInputChange}
-        inputProps={{
-          step: 1,
-          min: props.min,
-          max: props.max,
-          type: 'number'
-        }}
+const Slide = ({ name, value, min, max, handleInputChange, handleChange }) => {
+  return (
+    <StyledSlider>
+      <div className="container--slider">
+        <span className="slider--title">{name}</span>
+        <Input
+          value={value}
+          margin="dense"
+          onChange={handleInputChange}
+          inputProps={{ step: 1, min, max, type: 'number' }}
+        />
+      </div>
+      <Slider
+        step={1}
+        min={min}
+        max={max}
+        value={value}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
       />
-    </div>
-    
-    <Slider
-      value={props.value}
-      min={props.min} 
-      step={1} 
-      max={props.max}
-      onChange={props.handleChange}
-      valueLabelDisplay="auto"
-    />
-    
-    
-  </div>
-  </>    
-  
-  )
+    </StyledSlider>
+  );
 };
 
 export default Slide;
