@@ -2,11 +2,20 @@ import React from 'react';
 import { Slider, Input } from '@material-ui/core';
 import StyledSlider from './Styled';
 
-const Slide = ({ name, value, min, max, handleInputChange, handleChange }) => {
+interface SlideProps {
+  name: string
+  value: number
+  min: number
+  max: number
+  handleInputChange: any
+  handleChange: any
+}
+
+const Slide: React.FC<SlideProps> = ({ name, value, min, max, handleInputChange, handleChange }) => {
   return (
     <StyledSlider>
-      <div className="container--slider">
-        <span className="slider--title">{name}</span>
+      <div className="container__slider">
+        <span className="slider__title">{name}</span>
         <Input
           value={value}
           margin="dense"

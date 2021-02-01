@@ -4,13 +4,13 @@ const StyledSlider = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
 
-  .container--slider {
+  .container__slider {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 
-    .slider--title {
+    .slider__title {
       font-weight: bold;
       text-transform: capitalize;
       font-size: 1.1em;
