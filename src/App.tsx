@@ -1,31 +1,40 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import BoxShadow from './pages/BoxShadow';
 import './App.css';
+import BoxShadowContext from './context/BoxShadow/Context';
 
-function App() {
-
-  const [backgroundColor, setBackgroundColor] = useState('#FFFFFF');
-  const [boxColor, setBoxColor] = useState('#c4c4c4');
-  const [styleboxshadow, setStyleboxshadow] = useState({ boxShadow: '10px 10px 5px 1px #3F51B5' });
+const App:React.FC = () => {
+  const { boxOptions }: any = useContext(BoxShadowContext);
 
   return (
     <div className="container">
-      <BoxShadow
-        getStyle={setStyleboxshadow}
-        getBackgroundColor={setBackgroundColor}
-        getBoxColor={setBoxColor}
-      />
-      <div className="mainBox" style={{ backgroundColor: `${backgroundColor}` }}>
-        <div className="box" style={{ backgroundColor: `${boxColor}`, boxShadow: `${styleboxshadow.boxShadow}` }}>
+      <BoxShadow />
+      <div
+        className="mainBox"
+        style={{ backgroundColor: `${boxOptions.bgColor}` }}
+      >
+        <div
+          className="box"
+          style={{
+            backgroundColor: `${boxOptions.boxColor}`,
+            boxShadow: `${boxOptions.styled}`,
+          }}
+        >
           <ul>
-            <li>-webkit-box-shadow: {styleboxshadow.boxShadow}</li>
-            <li>-moz-box-shadow: {styleboxshadow.boxShadow}</li>
-            <li>box-shadow: {styleboxshadow.boxShadow}</li>
+            <li>
+              {`-webkit-box-shadow: ${boxOptions.styled}`}
+            </li>
+            <li>
+              {`-moz-box-shadow: ${boxOptions.styled}`}
+            </li>
+            <li>
+              {`box-shadow: ${boxOptions.styled}`}
+            </li>
           </ul>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;
