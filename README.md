@@ -23,7 +23,7 @@ git clone https://github.com/jonlima2018/box-shadow.git
 ### Após realizar o clone do projeto, abra o terminal, acesse a pasta **box-shadow** e instale as dependências
 
 ```shell
-cd challengebcredi/
+cd box-shadow/
 yarn install
 ```
 
