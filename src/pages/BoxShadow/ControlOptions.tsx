@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import Slide from '../../components/Slider';
 import Picker from '../../components/Picker';
-import './styles.css';
 import BoxShadowContext, { BoxOptions } from '../../context/BoxShadow/Context';
 
 const ControlOptions: React.FC = () => {
@@ -108,32 +107,30 @@ const ControlOptions: React.FC = () => {
   };
 
   return (
-    <div className="container-main">
-      <h1>Css Box Shadow</h1>
-      <div className="container-boxshadow">
-        <div>
-          {slideItens.map(({
-            title, initialValue, min, max,
-          }) => (
-            <Slide
-              key={title}
-              name={title}
-              value={initialValue}
-              min={min}
-              max={max}
-              handleChange={(value) => handleChangeSlide(title, value)}
-            />
-          ))}
-          {pickerItens.map(({ title, color }) => (
-            <Picker
-              key={title}
-              name={title}
-              color={color}
-              getColor={(setColor) => handleInputColor(title, setColor)}
-            />
-          ))}
-          <button type="button" onClick={resetCss}>Reset</button>
-        </div>
+    <div className="control">
+      <h1 className="control__title">Css Box Shadow</h1>
+      <div className="control__options">
+        {slideItens.map(({
+          title, initialValue, min, max,
+        }) => (
+          <Slide
+            key={title}
+            name={title}
+            value={initialValue}
+            min={min}
+            max={max}
+            handleChange={(value) => handleChangeSlide(title, value)}
+          />
+        ))}
+        {pickerItens.map(({ title, color }) => (
+          <Picker
+            key={title}
+            name={title}
+            color={color}
+            getColor={(setColor) => handleInputColor(title, setColor)}
+          />
+        ))}
+        <button className="control__options__btn" type="button" onClick={resetCss}>Reset</button>
       </div>
     </div>
   );

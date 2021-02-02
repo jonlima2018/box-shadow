@@ -1,12 +1,13 @@
 import React from 'react';
 import ControlOptions from './ControlOptions';
 import PainelShadow from './PainelShadow';
+import StyledContainer from './Styled';
 
 const BoxShadow:React.FC = () => (
-  <div className="container">
+  <StyledContainer>
     <ControlOptions />
     <PainelShadow />
-  </div>
+  </StyledContainer>
 );
 
 export default BoxShadow;

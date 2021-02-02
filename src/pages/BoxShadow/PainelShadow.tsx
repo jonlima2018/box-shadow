@@ -6,26 +6,17 @@ const PainelShadow:React.FC = () => {
 
   return (
     <div
-      className="mainBox"
+      className="box"
       style={{ backgroundColor: `${boxOptions.bgColor}` }}
     >
       <div
-        className="box"
-        style={{
-          backgroundColor: `${boxOptions.boxColor}`,
-          boxShadow: `${boxOptions.styled}`,
-        }}
+        className="box__color"
+        style={{ backgroundColor: `${boxOptions.boxColor}`, boxShadow: `${boxOptions.styled}` }}
       >
-        <ul>
-          <li>
-            {`-webkit-box-shadow: ${boxOptions.styled}`}
-          </li>
-          <li>
-            {`-moz-box-shadow: ${boxOptions.styled}`}
-          </li>
-          <li>
-            {`box-shadow: ${boxOptions.styled}`}
-          </li>
+        <ul className="box__code">
+          <li className="box__items">{`-webkit-box-shadow: ${boxOptions.styled}`}</li>
+          <li className="box__items">{`-moz-box-shadow: ${boxOptions.styled}`}</li>
+          <li className="box__items">{`box-shadow: ${boxOptions.styled}`}</li>
         </ul>
       </div>
     </div>
