@@ -1,0 +1,29 @@
+{
+	"settings": {
+		"react": { "version": "detect" }
+	},
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["react", "jsx-a11y", "import"],
+	"extends": [
+		"airbnb-typescript",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended"
+	],
+	"parserOptions": {
+		"project": "./tsconfig.json",
+		"ecmaVersion": 2018,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"rules": {
+		"react/prop-types": "off",
+		"react/jsx-ident": "off",
+		"indent": "off",
+		"@typescript-eslint/indent": ["error"],
+		"@typescript-eslint/no-explicit-any": "off",
+		"jsx-a11y/click-events-have-key-events": "off",
+		"jsx-a11y/no-static-element-interactions": "off"
+	}
+}
