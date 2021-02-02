@@ -4,9 +4,9 @@ import { ChromePicker } from 'react-color';
 import StyledPicker from './Styled';
 
 interface PickerProps {
-  color: string
-  getColor: any
-  name: string
+  color: string;
+  getColor(value:string): void;
+  name: string;
 }
 
 const Picker: React.FC<PickerProps> = ({ color, getColor, name }) => {
@@ -21,8 +21,8 @@ const Picker: React.FC<PickerProps> = ({ color, getColor, name }) => {
     setShowPicker(false);
   };
 
-  const handleChange = (color: string) => {
-    setColorHex({ hex: color });
+  const handleChange = (hex: string) => {
+    setColorHex({ hex });
     getColor(colorHex.hex);
   };
 
@@ -38,11 +38,15 @@ const Picker: React.FC<PickerProps> = ({ color, getColor, name }) => {
       {showPicker && (
         <div className="picker_popover">
           <div className="picker_cover" onClick={handleClose} />
-          <ChromePicker disableAlpha color={colorHex.hex} onChange={({ hex }) => handleChange(hex)} />
+          <ChromePicker
+            disableAlpha
+            color={colorHex.hex}
+            onChange={({ hex }) => handleChange(hex)}
+          />
         </div>
       )}
     </StyledPicker>
   );
-}
+};
 
 export default Picker;
