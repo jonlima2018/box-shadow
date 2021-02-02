@@ -4,6 +4,7 @@ const StyledContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   margin-top: 40px;
+  
 
   .control{
     display: flex;
@@ -87,6 +88,34 @@ const StyledContainer = styled.div`
             }
         }
     }
+  }
+
+  @media(max-width: 900px){
+      display:flex;
+      flex-direction:column;
+      align-items: center;
+
+    .control__options{
+        min-width: 200px;
+        width: 250px;
+    }
+
+  .box{
+      width:350px;
+      height:350px;
+      margin-top:20px;
+      margin-bottom:20px;
+    
+    .box__color{
+        height: 250px;
+        width: 250px;
+        .box__code{
+            width: 250px;
+            height: 150px;
+        }
+    }
+  }
+
   }
 
 `;
