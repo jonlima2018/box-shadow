@@ -1,29 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Slide from '../../components/Slider';
 import Picker from '../../components/Picker';
 import './styles.css';
+import BoxShadowContext, { BoxOptions } from '../../context/BoxShadow/Context';
 
-interface BoxShadowProps {
-  getStyle(boxShadow: string): string
-  getBackgroundColor(color: string): string
-  getBoxColor(color: string): string
-}
-
-const BoxShadow: React.FC<BoxShadowProps> = ({ getStyle, getBackgroundColor, getBoxColor }) => {
-  const INITIAL_STATE = {
-    horizontal: 10,
-    vertical: 10,
-    blur: 5,
-    spread: 1,
-    shadowColor: '#3F51B5',
-    bgColor: '#ececec',
-    boxColor: '#888aea',
-  };
-
-  const INITIAL_STYLED = `${INITIAL_STATE.horizontal}px ${INITIAL_STATE.vertical}px ${INITIAL_STATE.blur}px ${INITIAL_STATE.spread}px ${INITIAL_STATE.shadowColor}`;
-
-  const [boxOptions, setBoxOptions] = useState(INITIAL_STATE);
-  const [styled, setStyled] = useState(INITIAL_STYLED);
+const BoxShadow: React.FC = () => {
+  const { boxOptions, setBoxOptions, reset } :any = useContext(BoxShadowContext);
 
   const minOffSet = -200;
   const maxOffSet = 200;
@@ -74,22 +56,15 @@ const BoxShadow: React.FC<BoxShadowProps> = ({ getStyle, getBackgroundColor, get
     },
   ];
 
-  useEffect(() => {
-    getStyle(styled);
-    getBackgroundColor(boxOptions.bgColor);
-    getBoxColor(boxOptions.boxColor);
-  });
-
   const resetCss = () => {
-    setBoxOptions(INITIAL_STATE);
-    setStyled(INITIAL_STYLED);
+    setBoxOptions(reset);
   };
 
   const setCss = () => {
     const {
       horizontal, vertical, blur, spread, shadowColor,
     } = boxOptions;
-    setStyled(`${horizontal}px ${vertical}px ${blur}px ${spread}px ${shadowColor}`);
+    setBoxOptions((prev:BoxOptions) => ({ ...prev, styled: `${horizontal}px ${vertical}px ${blur}px ${spread}px ${shadowColor}` }));
   };
 
   const minMax = (value:number, min:number, max:number) => {
@@ -104,16 +79,16 @@ const BoxShadow: React.FC<BoxShadowProps> = ({ getStyle, getBackgroundColor, get
   const handleChangeSlide = (name: string, value: number) => {
     switch (name) {
       case 'Horizontal':
-        setBoxOptions((prev) => ({ ...prev, horizontal: minMax(value, minOffSet, maxOffSet) }));
+        setBoxOptions((prev:BoxOptions) => ({ ...prev, horizontal: minMax(value, minOffSet, maxOffSet) }));
         return setCss();
       case 'Vertical':
-        setBoxOptions((prev) => ({ ...prev, vertical: minMax(value, minOffSet, maxOffSet) }));
+        setBoxOptions((prev: BoxOptions) => ({ ...prev, vertical: minMax(value, minOffSet, maxOffSet) }));
         return setCss();
       case 'Blur':
-        setBoxOptions((prev) => ({ ...prev, blur: minMax(value, minBlur, maxBlur) }));
+        setBoxOptions((prev:BoxOptions) => ({ ...prev, blur: minMax(value, minBlur, maxBlur) }));
         return setCss();
       case 'Spread':
-        setBoxOptions((prev) => ({ ...prev, spread: minMax(value, minSpread, maxSpread) }));
+        setBoxOptions((prev:BoxOptions) => ({ ...prev, spread: minMax(value, minSpread, maxSpread) }));
         return setCss();
       default: return '';
     }
@@ -122,12 +97,12 @@ const BoxShadow: React.FC<BoxShadowProps> = ({ getStyle, getBackgroundColor, get
   const handleInputColor = (name: string, color: string) => {
     switch (name) {
       case 'Shadow Color':
-        setBoxOptions((prev) => ({ ...prev, shadowColor: color }));
+        setBoxOptions((prev:BoxOptions) => ({ ...prev, shadowColor: color }));
         return setCss();
       case 'Background Color':
-        return setBoxOptions((prev) => ({ ...prev, bgColor: color }));
+        return setBoxOptions((prev:BoxOptions) => ({ ...prev, bgColor: color }));
       case 'Box Color':
-        return setBoxOptions((prev) => ({ ...prev, boxColor: color }));
+        return setBoxOptions((prev:BoxOptions) => ({ ...prev, boxColor: color }));
       default: return '';
     }
   };
